@@ -42,3 +42,6 @@ create table Events (
     FOREIGN KEY (GearID) REFERENCES Gear(GearID),
     FOREIGN KEY (ExpenseID) REFERENCES expenses(ExpenseID)
 );
+
+ALTER TABLE Member
+ADD COLUMN Password VARCHAR(255) NOT NULL;

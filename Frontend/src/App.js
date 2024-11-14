@@ -21,4 +21,7 @@ function App() {
   );
 }
 
+// In App.js, add this route inside your Routes component
+<Route path="/home" element={<Home />} />
+
 export default App;
