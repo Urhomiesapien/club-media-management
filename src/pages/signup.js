@@ -20,7 +20,7 @@ const Signup = () => {
         <div className="form-group">
           <label>Username</label>
           <input
-            type="text"
+            type="text"wq
             className="form-control"
             value={username}
             onChange={(e) => setUsername(e.target.value)}

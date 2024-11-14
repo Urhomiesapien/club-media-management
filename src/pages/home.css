@@ -1,0 +1,36 @@
+/* src/pages/Home.css */
+.events-widget {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 500px; /* Set maximum height for scrollable effect */
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  
+  .event-card {
+    background-color: #e0f7fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+  }
+  
+  .event-card h3 {
+    font-size: 1.5rem;
+    color: #00796b;
+    margin-bottom: 5px;
+  }
+  
+  .event-card p {
+    margin: 5px 0;
+  }
+  
+  .event-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #00796b;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
