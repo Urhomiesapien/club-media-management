@@ -2,17 +2,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// const Signup = () => {
-//   const [username, setUsername] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const handleSignup = (e) => {
-//     e.preventDefault();
-//     // Add signup logic here (e.g., API call)
-//     console.log('Signing up with:', { username, email, password });
-//   };
-
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -23,9 +12,14 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', { username, email, password });
+      const response = await axios.post('http://localhost:5000/api/signup', { username, email, password, memberID });
       setMessage(response.data.message);
+      if (response.data.message === 'User registered successfully!') {
+        window.alert("NEW USER CREATED- REDIRECTING TO LOGIN PAGE");
+        window.location.href = '/';
+      }
     } catch (error) {
+      window.alert("COULDN'T SIGN UP- TRY AGAIN WITH A DIFFERENT USERNAME");
       setMessage('Signup failed. Please try again.');
     }
   };

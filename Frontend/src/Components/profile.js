@@ -1,83 +1,91 @@
-// src/Components/Profile.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useHistory, useParams } from 'react-router-dom';
 
 const Profile = () => {
-  const [fullName, setFullName] = useState('');
-  const [age, setAge] = useState('');
-  const [bio, setBio] = useState('');
-  const [contact, setContact] = useState('');
-  const [message, setMessage] = useState('');
-  const { memberID } = useParams(); // Get memberID from URL parameters
-  const history = useHistory();
+  const [profile, setProfile] = useState({});
+  const [editMode, setEditMode] = useState(false);
+  const [formData, setFormData] = useState({});
+  const username = localStorage.getItem('username'); // Retrieve username from localStorage
 
-  const handleProfileUpdate = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:5000/api/update-profile', {
-        memberID,
-        fullName,
-        age,
-        bio,
-        contact,
-      });
-      setMessage(response.data.message);
-      history.push('/home'); // Redirect to home after updating profile
-    } catch (error) {
-      setMessage('Profile update failed. Please try again.');
-      console.error('Profile update error:', error.response?.data || error.message);
-    }
+  // Fetch profile data
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/profile/${username}`)
+      .then(response => {
+        setProfile(response.data);
+        setFormData(response.data); // Pre-fill form with fetched data
+      })
+      .catch(error => console.error('Error fetching profile:', error));
+  }, [username]);
+
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle form submission for updates
+  const handleSave = () => {
+    axios.put(`http://localhost:5000/api/profile/${username}`, formData)
+      .then(response => {
+        setEditMode(false); // Exit edit mode
+        setProfile(formData); // Update profile data with new data
+        alert(response.data.message);
+      })
+      .catch(error => console.error('Error updating profile:', error));
   };
 
   return (
     <div className="container mt-5">
-      <h2>Complete Your Profile</h2>
-      <form onSubmit={handleProfileUpdate}>
-        <div className="form-group">
-          <label>Full Name</label>
-          <input
-            type="text"
-            className="form-control"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
+      <h2>Profile</h2>
+      {editMode ? (
+        <form>
+          <div className="form-group">
+            <label>Name</label>
+            <input
+              type="text"
+              className="form-control"
+              name="Name"
+              value={formData.Name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              className="form-control"
+              name="Email"
+              value={formData.Email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Phone Number</label>
+            <input
+              type="text"
+              className="form-control"
+              name="PhoneNumber"
+              value={formData.PhoneNumber}
+              onChange={handleChange}
+            />
+          </div>
+          <button type="button" className="btn btn-primary mt-3" onClick={handleSave}>
+            Save
+          </button>
+        </form>
+      ) : (
+        <div>
+          <p><strong>Name:</strong> {profile.Name}</p>
+          <p><strong>Email:</strong> {profile.Email}</p>
+          <p><strong>Phone Number:</strong> {profile.PhoneNumber}</p>
+          <button className="btn btn-primary mt-3" onClick={() => setEditMode(true)}>
+            Edit
+          </button>
         </div>
-        <div className="form-group">
-          <label>Age</label>
-          <input
-            type="number"
-            className="form-control"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Bio</label>
-          <textarea
-            className="form-control"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Contact</label>
-          <input
-            type="text"
-            className="form-control"
-            value={contact}
-            onChange={(e) => setContact(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary mt-3">Save Profile</button>
-      </form>
-      {message && <p>{message}</p>}
+      )}
     </div>
   );
 };
 
 export default Profile;
+

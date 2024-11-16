@@ -3,15 +3,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-// const Login = () => {
-//   const [username, setUsername] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-//     // Add login logic here (e.g., API call)
-//     console.log('Logging in with:', { username, password });
-//   };
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,9 +14,12 @@ const Login = () => {
       const response = await axios.post('http://localhost:5000/api/login', { username, password });
       setMessage(response.data.message);
       if (response.data.message === 'Login successful!') {
+        localStorage.setItem('username', username);
+        // window.alert("Login successful! Redirecting to home page.");
         window.location.href = '/home';
       }
     } catch (error) {
+      window.alert("RECHECK YOUR CREDENTIALS");
       setMessage('Login failed. Please check your credentials.');
     }
   };

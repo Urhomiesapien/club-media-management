@@ -1,22 +1,8 @@
-// // src/pages/Home.js
-// import React from 'react';
-
-// const Home = () => {
-//   return (
-//     <div className="container mt-5">
-//       <h2>Welcome to the Home Page!</h2>
-//       <p>You have successfully logged in.</p>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 // src/pages/Home.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import './home.css';
+import "./css/home.css";
 const Home = () => {
     // Dummy event data for testing the layout
     const events = [
@@ -42,12 +28,12 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <aside className="sidebar">
+      {/* <aside className="sidebar">
       <h2>Navigation</h2>
         <ul>
           <li><Link to="/tasks">tasks</Link></li>
         </ul>
-      </aside>
+      </aside> */}
 
       <main className="main-content">
         <h1>Events</h1>
