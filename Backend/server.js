@@ -73,17 +73,37 @@ app.get('/api/home', (req, res) => {
   console.log('Landed to home page');  // LOG
 });
 
-// Fetch all events
+// // Fetch all events
+// app.get('/api/events', (req, res) => {
+//   const query = `SELECT EventName, EventDate, clubs, mediaLink FROM Events`;
+//   db.query(query, (err, results) => {
+//       if (err) {
+//           console.error('Error fetching events:', err);
+//           return res.status(500).json({ error: 'Database error' });
+//       }
+//       res.status(200).json(results);
+//   });
+// });
+
+// Get all events with basic details
 app.get('/api/events', (req, res) => {
-  const query = `SELECT EventName, EventDate, clubs, mediaLink FROM Events`;
+  const query = 'CALL GetAllEvents()';
   db.query(query, (err, results) => {
-      if (err) {
-          console.error('Error fetching events:', err);
-          return res.status(500).json({ error: 'Database error' });
-      }
-      res.status(200).json(results);
+    if (err) return res.status(500).json({ error: 'Error fetching events.' });
+    res.status(200).json(results[0]); // Return first result set
   });
 });
+
+// Get details of a specific event
+app.get('/api/events/:id', (req, res) => {
+  const { id } = req.params;
+  const query = 'CALL GetEventDetails(?)';
+  db.query(query, [id], (err, results) => {
+    if (err) return res.status(500).json({ error: 'Error fetching event details.' });
+    res.status(200).json(results[0][0]); // Return first row of first result set
+  });
+});
+
 
 // Fetch Profile
 app.get('/api/profile/:username', (req, res) => {
