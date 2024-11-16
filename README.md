@@ -1,4 +1,4 @@
-Club Media Management System
+# Club Media Management System
 Overview
 The Club Media Management System is designed to streamline the organization and documentation of club events and associated media. This system allows users to efficiently map events to media links, track members involved, record gear used, and manage expenses, offering a centralized solution for managing and updating event-related information.
 
