@@ -68,22 +68,37 @@ app.post('/api/login', (req, res) => {
 });
 
 // Home route
+// app.get('/api/home', (req, res) => {
+//   res.status(200).json({ message: 'Welcome to the homepage!' });
+//   console.log('Landed to home page');  // LOG
+// });
+
+// app.get('/api/home', (req, res) => {
+//   const query = 'SELECT * FROM events WHERE Latest = TRUE';
+
+//   db.query(query, (err, results) => {
+//     if (err) return res.status(500).json({ error: 'Error fetching latest event.' });
+//     res.status(200).json(results[0]); // Assuming only one event is marked as latest
+//   });
+//   // const query = 'CALL GetAllEvents()';
+//   // db.query(query, (err, results) => {
+//   //   if (err) return res.status(500).json({ error: 'Error fetching events.' });
+//   //   res.status(200).json(results[0]); // Return first result set
+//   // });
+// });
+
+// Server-side code to fetch latest event
 app.get('/api/home', (req, res) => {
-  res.status(200).json({ message: 'Welcome to the homepage!' });
-  console.log('Landed to home page');  // LOG
+  const query = 'SELECT * FROM events ORDER BY EventDate DESC LIMIT 1'; // Query to get the latest event
+
+  db.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: 'Error fetching the latest event.' });
+    }
+    res.status(200).json(results[0]); // Send the first event (latest by date)
+  });
 });
 
-// // Fetch all events
-// app.get('/api/events', (req, res) => {
-//   const query = `SELECT EventName, EventDate, clubs, mediaLink FROM Events`;
-//   db.query(query, (err, results) => {
-//       if (err) {
-//           console.error('Error fetching events:', err);
-//           return res.status(500).json({ error: 'Database error' });
-//       }
-//       res.status(200).json(results);
-//   });
-// });
 
 // Get all events with basic details
 app.get('/api/events', (req, res) => {

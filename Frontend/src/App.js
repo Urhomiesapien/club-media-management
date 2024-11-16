@@ -24,15 +24,18 @@ function Navigation() {
   // Show full navigation for other pages
   return (
     <nav>
+      <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
+      <Link to="/profile" className="btn btn-link">Profile: {username}</Link>
+      <Link to="/" className="btn btn-link">Login as another user</Link>
+      </div>
       <Link to="/home" className="btn btn-link">Home</Link>
       <Link to="/events" className="btn btn-link">Events</Link>
-      <Link to="/profile" className="btn btn-link">Profile: {username}</Link>
+      
       {username ? (
         <span className="navbar-text"></span>
       ) 
       : (
         <>
-          {/* <Link to="/login" className="btn btn-link">Login</Link> */}
           <Link to="/signup" className="btn btn-link">Signup</Link>
         </>
       )}
