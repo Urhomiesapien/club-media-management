@@ -16,7 +16,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import './home.css';
+import './css/home.css';
 const Home = () => {
     // Dummy event data for testing the layout
     const events = [
@@ -42,12 +42,11 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <aside className="sidebar">
-      <h2>Navigation</h2>
-        <ul>
-          <li><Link to="/tasks">tasks</Link></li>
-        </ul>
-      </aside>
+      <header className="top-bar">
+        <h1>Home</h1>
+        <Link to="/tasks">Tasks</Link>
+        <Link to="/profile">Profile</Link>
+      </header>
 
       <main className="main-content">
         <h1>Events</h1>
@@ -55,7 +54,7 @@ const Home = () => {
           {events.map((event) => (
             <div key={event.id} className="event-card">
               <h3>{event.name}</h3>
-              <p>Date: {new Date(event.date).toLocaleDateString()}</p>
+              <p>Date: {event.date}</p>
               <p>Organizer: {event.organizer}</p>
               <a href={event.driveLink} target="_blank" rel="noopener noreferrer">
                 View Photos
@@ -64,8 +63,12 @@ const Home = () => {
           ))}
         </div>
       </main>
+
+      <footer className="footer">
+        Club Media Management System. Copyright Manav and Kamya 2024.
+      </footer>
     </div>
   );
-};
+  };
 
 export default Home;

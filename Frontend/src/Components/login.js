@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import './css/login.css';
 
 // const Login = () => {
 //   const [username, setUsername] = useState('');
@@ -56,6 +57,9 @@ const Login = () => {
         </div>
         <button type="submit" className="btn btn-primary mt-3">Login</button>
       </form>
+      <footer className="footer">
+        Club Media Management System. Copyright Manav and Kamya 2024.
+      </footer>
     </div>
   );
 };

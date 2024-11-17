@@ -78,6 +78,9 @@ const Signup = () => {
         </div>
         <button type="submit" className="btn btn-primary mt-3">Sign Up</button>
       </form>
+      <footer className="footer">
+        Club Media Management System. Copyright Manav and Kamya 2024.
+      </footer>
     </div>
   );
 };

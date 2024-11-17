@@ -1,7 +1,8 @@
 // src/Components/Profile.js
+// src/Components/Profile.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Profile = () => {
   const [fullName, setFullName] = useState('');
@@ -10,7 +11,7 @@ const Profile = () => {
   const [contact, setContact] = useState('');
   const [message, setMessage] = useState('');
   const { memberID } = useParams(); // Get memberID from URL parameters
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
@@ -23,7 +24,7 @@ const Profile = () => {
         contact,
       });
       setMessage(response.data.message);
-      history.push('/home'); // Redirect to home after updating profile
+      navigate('/home'); // Redirect to home after updating profile
     } catch (error) {
       setMessage('Profile update failed. Please try again.');
       console.error('Profile update error:', error.response?.data || error.message);
@@ -81,3 +82,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
