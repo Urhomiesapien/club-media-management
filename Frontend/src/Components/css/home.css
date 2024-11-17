@@ -1,0 +1,105 @@
+/* src/pages/Home.css */
+
+/* Global Styles */
+body {
+    background-color: #000000; /* Black background */
+    font-family: 'Roboto', sans-serif; /* Roboto font */
+    color: white; /* Default text color */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Top Bar */
+  .main-content h1 {
+    color: #FF6500; /* Bright orange color */
+    font-size: 2.5rem; /* Large text for "Home" */
+    margin: 20px 0;
+  }
+  
+  .main-content .top-bar a {
+    color: #cc5200; /* Slightly darker orange */
+    font-size: 1rem;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  .main-content .top-bar a:hover {
+    color: #FF6500; /* Brighten link on hover */
+    text-decoration: underline;
+  }
+  
+  /* Events Widget */
+  .events-widget {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two-column layout */
+    gap: 20px; /* Spacing between event cards */
+    margin: 20px 0;
+  }
+  
+  .event-card {
+    background-color: #FF6500; /* Bright orange background */
+    color: #000000; /* Black text color */
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 8px rgba(255, 101, 0, 0.4); /* Subtle shadow */
+  }
+  
+  .event-card:hover {
+    background-color: #FF7F32; /* Lighter shade of orange on hover */
+    transform: scale(1.05); /* Slight expansion */
+  }
+  
+  .event-card h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  .event-card p {
+    margin: 5px 0;
+  }
+  
+  .event-card a {
+    color: #000000; /* Black text for link */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .event-card a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    display: none; /* Hide sidebar for this Metro UI layout */
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: auto; /* Push footer to the bottom */
+    padding: 10px 0;
+    font-size: 0.8rem;
+    color: #888888;
+  }
+  
+  .footer a {
+    color: #888888;
+    text-decoration: none;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .events-widget {
+      grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
+  }
+  
