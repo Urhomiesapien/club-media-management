@@ -1,0 +1,105 @@
+/* Login.css */
+
+/* Container for Login Form */
+.container {
+    background-color: #000000; /* Black background for the whole page */
+    color: #fff; /* White text */
+    font-family: 'Roboto', sans-serif; /* Roboto font */
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  /* Login Title */
+  h2 {
+    color: #FF6500; /* Green color for the title */
+    
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  /* Signup Link */
+  .signup-link {
+    color: #1a6d33; /* Slightly darker green for the signup link */
+    font-size: 1.1rem;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  .signup-link:hover {
+    text-decoration: underline; /* Underline effect on hover */
+  }
+  
+  /* Form */
+  form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #222; /* Dark background for the form */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Input Fields */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid #FF6500; /* Orange border */
+    border-radius: 5px;
+    color: #bbb; /* Light gray text for input */
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease; /* Smooth transition for hover and focus */
+  }
+  
+  input::placeholder {
+    color: #bbb; /* Placeholder text color */
+  }
+  
+  input:hover {
+    border-width: 3px;
+    border-color: #FF7F32; /* Lighter orange on hover */
+    box-shadow: 0 0 8px rgba(255, 103, 0, 0.8); /* Glowing effect on hover */
+  }
+  
+  input:focus {
+    border-width: 3px;
+    border-color: #FF7F32; /* Same lighter orange when focused */
+    box-shadow: 0 0 8px rgba(255, 103, 0, 0.8); /* Glowing effect when focused */
+    color: #fff; /* Change text color when focused */
+  }
+  
+  /* Submit Button */
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #FF6500; /* Green button */
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s;
+
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #FF6500; /* Darker green on hover */
+  }
+  
+  /* Error or success message */
+  .message {
+    margin-top: 20px;
+    color: #ffcc00; /* Yellow color for messages */
+    text-align: center;
+  }
+  
+  
