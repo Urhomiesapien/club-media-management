@@ -1,7 +1,7 @@
 // src/pages/Signup.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import './css/signup.css'
+// import './css/signup.css'
 
 const Signup = () => {
   const [username, setUsername] = useState('');
