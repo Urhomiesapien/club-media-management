@@ -45,3 +45,19 @@ create table Events (
 
 ALTER TABLE Member
 ADD COLUMN Password VARCHAR(255) NOT NULL;
+
+
+INSERT INTO Events (
+    EventID, 
+    EventName, 
+    EventDate, 
+    clubs, 
+    MemberID, 
+    mediaLink, 
+    GearID, 
+    ExpenseID, 
+    EventFaculty
+)
+VALUES
+    ('evt001', 'Tech Talk', '2024-12-01', 'GDSC', 'mem001', 'https://example.com/media/evt004', 'gr001', 'exp001', 'Dr. Smith'),
+    ('evt002', 'Hackathon', '2024-12-15', 'ACM', 'mem002', 'https://example.com/media/evt005', 'gr002', 'exp002', 'Dr. Johnson');
