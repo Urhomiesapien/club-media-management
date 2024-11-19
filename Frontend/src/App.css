@@ -94,6 +94,7 @@ nav .right-links {
   text-decoration: underline; /* Underline on hover */
 }
 .container.mt-5 {
+  width: 100%;
   margin-top: 0; /* Remove or adjust the top margin */
   background-color: #000000; /* Match the background color of your page */
   color: white; /* Ensure text visibility */

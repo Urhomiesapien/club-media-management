@@ -50,7 +50,6 @@
 
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Modal from 'react-modal'; // Install: npm install react-modal
 import './css/events.css'
 const Events = () => {
@@ -136,7 +135,7 @@ const Events = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="w-full mt-5">
       <h2 className="events-title">Events</h2> {/* Apply the CSS class here */}
       <div className="events-list">
         {events.map((event) => (
