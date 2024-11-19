@@ -58,7 +58,7 @@ app.post('/api/login', (req, res) => {
     if (err) return res.status(500).json({ error: err.message });
     if (results.length > 0) {
       console.log('login successful');  // LOG
-      res.status(200).json({ message: 'Login successful!', redirect: '/home' }); // here is where it goes to home after logging in 
+      res.status(200).json({ message: 'Login successful!', redirect: '/home' });
     } else {
       // console.error(err.message)
       console.log('login not successful');  // LOG
@@ -119,6 +119,23 @@ app.get('/api/events/:id', (req, res) => {
   });
 });
 
+// Get all events with basic details
+// app.get('/api/tasks', (req, res) => {
+//   const query = 'CALL GetAllEvents()';
+//   db.query(query, (err, results) => {
+//     if (err) return res.status(500).json({ error: 'Error fetching events.' });
+//     res.status(200).json(results[0]); // Return first result set
+//   });
+// });
+// // Get details of a specific event
+// app.get('/api/tasks/:id', (req, res) => {
+//   const { id } = req.params;
+//   const query = 'CALL GetEventDetails(?)';
+//   db.query(query, [id], (err, results) => {
+//     if (err) return res.status(500).json({ error: 'Error fetching event details.' });
+//     res.status(200).json(results[0][0]); // Return first row of first result set
+//   });
+// });
 
 // Fetch Profile
 app.get('/api/profile/:username', (req, res) => {
@@ -140,6 +157,47 @@ app.put('/api/profile/:username', (req, res) => {
     res.status(200).json({ message: 'Profile updated successfully.' });
   });
 });
+
+app.get('/api/tasks/:username', (req, res) => {
+  const { username } = req.params;
+  const query = `
+      SELECT EventID, EventName, TaskDescription, Assignee, TaskCompleted
+      FROM events
+      WHERE Assignee = ?;
+  `;
+  db.query(query, [username], (err, results) => {
+      if (err) return res.status(500).json({ error: 'Error fetching tasks.' });
+      res.status(200).json(results);
+  });
+});
+
+app.put('/api/tasks/:eventID', (req, res) => {
+  const { eventID } = req.params;
+  const { TaskDescription, TaskCompleted } = req.body;
+  const query = `
+      UPDATE events
+      SET TaskDescription = ?, TaskCompleted = ?
+      WHERE EventID = ?;
+  `;
+  db.query(query, [TaskDescription, TaskCompleted, eventID], (err) => {
+      if (err) return res.status(500).json({ error: 'Error updating task.' });
+      res.status(200).json({ message: 'Task updated successfully.' });
+  });
+});
+
+app.post('/api/tasks', (req, res) => {
+  const { EventName, TaskDescription, Assignee } = req.body;
+  const query = `
+      INSERT INTO events (EventName, TaskDescription, Assignee, TaskCompleted)
+      VALUES (?, ?, ?, FALSE);
+  `;
+  db.query(query, [EventName, TaskDescription, Assignee], (err) => {
+      if (err) return res.status(500).json({ error: 'Error adding task.' });
+      res.status(201).json({ message: 'Task added successfully.' });
+  });
+});
+
+
 
 // Start server
 const PORT = 5000;

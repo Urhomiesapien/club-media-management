@@ -91,6 +91,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './css/profile.css'
 
 const Profile = () => {
   const [profile, setProfile] = useState({});

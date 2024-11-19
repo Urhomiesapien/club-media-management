@@ -43,5 +43,20 @@ create table Events (
     FOREIGN KEY (ExpenseID) REFERENCES expenses(ExpenseID)
 );
 
+CREATE TABLE Covers (
+	EventID VARCHAR(50),
+    MemberIDID VARCHAR(50),
+    Primary key(EventID, MemberID),
+    FOREIGN KEY (EventID) REFERENCES Events(EventID),
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID)
+);
+
 ALTER TABLE Member
 ADD COLUMN Password VARCHAR(255) NOT NULL;
+
+ALTER TABLE events 
+ADD TaskDescription TEXT,
+ADD Assignee VARCHAR(255),
+ADD TaskCompleted BOOLEAN DEFAULT FALSE;
+
+

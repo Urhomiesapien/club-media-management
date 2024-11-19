@@ -5,6 +5,7 @@ import Login from './Components/login';
 import Signup from './Components/signup';
 import Events from './Components/events';
 import Profile from './Components/profile';
+import Tasks from './Components/tasks'
 
 
 function Navigation() {
@@ -30,6 +31,7 @@ function Navigation() {
       </div>
       <Link to="/home" className="btn btn-link">Home</Link>
       <Link to="/events" className="btn btn-link">Events</Link>
+      <Link to="/tasks" className="btn btn-link">Tasks</Link>
       
       {username ? (
         <span className="navbar-text"></span>
@@ -54,6 +56,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/events" element={<Events />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/tasks" element={<Tasks />} />
         </Routes>
       </div>
     </Router>
