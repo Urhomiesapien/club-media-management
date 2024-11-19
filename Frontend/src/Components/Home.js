@@ -158,9 +158,7 @@ const Home = () => {
   const [event, setEvent] = useState(null); // State to hold the event data
   const [loading, setLoading] = useState(true); // State to manage loading state
 
-
   useEffect(() => {
-    // Fetch the latest event when the component mounts
     const fetchLatestEvent = async () => {
       try {
         const response = await axios.get('/api/home'); // API call to fetch latest event
@@ -173,7 +171,7 @@ const Home = () => {
     };
 
     fetchLatestEvent(); // Fetch the latest event
-  }, []); // Empty dependency array ensures this runs only once when the component mounts
+  }, []);
 
   if (loading) {
     return <p>Loading latest event...</p>; // Show loading message while data is being fetched
@@ -181,9 +179,18 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* Image Banner */}
+      <div className="image-banner">
+        <img 
+          src="https://www.livemint.com/lm-img/img/2024/07/03/600x338/camera_buying_guide_1720008963555_1720013606919.jpg" 
+          alt="Event Banner" 
+          className="banner-img" 
+        />
+      </div>
+
       <main className="main-content">
-        <h1>Latest Event</h1>
-        {event ? ( // Check if event data exists
+        <h1>Welcome to Club Media Management System</h1>
+        {event ? (
           <div className="event-card">
             <h3>{event.EventName}</h3>
             <p>Date: {new Date(event.EventDate).toLocaleDateString()}</p>
@@ -193,7 +200,7 @@ const Home = () => {
             </a>
           </div>
         ) : (
-          <p>No event found.</p> // If no event data is available
+          <p>No Announcements Yet.</p>
         )}
       </main>
     </div>
@@ -201,3 +208,4 @@ const Home = () => {
 };
 
 export default Home;
+

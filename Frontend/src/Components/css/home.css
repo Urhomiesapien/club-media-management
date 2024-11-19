@@ -101,4 +101,22 @@ body {
       grid-template-columns: 1fr; /* Single column for smaller screens */
     }
   }
+  .home-container {
+    background-color: #000000; /* Page background color */
+    color: white; /* Text color */
+  }
+  
+  .image-banner {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden; /* Ensure the image doesn't overflow */
+  }
+  
+  .banner-img {
+    width: 100%; /* Make the image span the full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure image covers the banner space */
+  }
+  
   
