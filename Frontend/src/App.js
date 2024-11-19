@@ -5,8 +5,7 @@ import Login from './Components/login';
 import Signup from './Components/signup';
 import Events from './Components/events';
 import Profile from './Components/profile';
-
-
+import './App.css'
 function Navigation() {
   const location = useLocation(); // Get the current route
   const username = localStorage.getItem('username');
@@ -15,8 +14,10 @@ function Navigation() {
   if (location.pathname === '/' || location.pathname === '/signup') {
     return (
       <nav>
-        <Link to="/" className="btn btn-link">Login</Link>
-        <Link to="/signup" className="btn btn-link">Signup</Link>
+        <div className="left-links">
+          <Link to="/" className="btn btn-link">Login</Link>
+          <Link to="/signup" className="btn btn-link">Signup</Link>
+        </div>
       </nav>
     );
   }
@@ -24,29 +25,28 @@ function Navigation() {
   // Show full navigation for other pages
   return (
     <nav>
-      <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
-      <Link to="/profile" className="btn btn-link">Profile: {username}</Link>
-      <Link to="/" className="btn btn-link">Login as another user</Link>
-      </div>
-      <Link to="/home" className="btn btn-link">Home</Link>
-      <Link to="/events" className="btn btn-link">Events</Link>
-      
-      {username ? (
-        <span className="navbar-text"></span>
-      ) 
-      : (
-        <>
+      <div className="left-links">
+        <Link to="/home" className="btn btn-link">Home</Link>
+        <Link to="/events" className="btn btn-link">Events</Link>
+        {username ? (
+          <span className="navbar-text"></span>
+        ) : (
           <Link to="/signup" className="btn btn-link">Signup</Link>
-        </>
-      )}
+        )}
+      </div>
+      <div className="right-links">
+        <Link to="/profile" className="btn btn-link">Profile: {username}</Link>
+        <Link to="/" className="btn btn-link">Login as another user</Link>
+      </div>
     </nav>
   );
 }
 
+
 function App() {
   return (
     <Router>
-      <div className="container mt-5">
+      <div className="container mt-0">
         <Navigation /> {/* Render the navigation */}
         <Routes>
           <Route path="/" element={<Login />} />
@@ -56,9 +56,14 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <p>© 2024 Club Media Management. All Rights Reserved to Kamya And Manav.</p>
+        </div>
+      </footer>
     </Router>
   );
 }
 
-// export default Navbar;
 export default App;

@@ -1,0 +1,122 @@
+/* General Profile Page Styles */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000; /* Black background for the form */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: 0 auto; /* Center the form */
+}
+
+/* Profile Title */
+.profile-container h2 {
+    color: #FF6500; /* Orange color for the title */
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Profile Details */
+.profile-details {
+    width: 100%;
+    text-align: left;
+}
+
+.profile-details p {
+    color: #FF6500; /* White text */
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.btn-edit {
+    width: 100%;
+    padding: 12px;
+    background-color: #FF6500; /* Orange background */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-edit:hover {
+    background-color: #FF7F32; /* Slightly lighter orange on hover */
+}
+
+/* Form Styles */
+.profile-form {
+    width: 100%;
+    background-color: #000000; /* Match the form background */
+}
+
+.profile-form .form-group {
+    margin-bottom: 20px;
+}
+
+.profile-form label {
+    color: #FF6500; /* Orange color for labels */
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.profile-form input {
+    width: 100%; /* Full width for input fields */
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #FF6500; /* Orange line at the bottom */
+    background-color: transparent; /* Transparent background for input */
+    color: #fff; /* White text inside the input */
+    font-size: 1rem;
+    outline: none; /* Remove outline */
+    transition: border-color 0.3s ease;
+}
+
+/* Focus State for Inputs */
+.profile-form input:focus {
+    border-bottom: 2px solid #FF7F32; /* Change bottom border color on focus */
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #FF6500; /* Orange background */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #FF7F32; /* Slightly lighter orange on hover */
+}
+
+/* Error Message */
+.error-message {
+    color: #FF3B30; /* Red color for error messages */
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px;
+        width: 90%; /* Make form take up more width on small screens */
+    }
+}

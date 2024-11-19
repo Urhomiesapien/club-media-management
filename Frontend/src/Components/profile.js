@@ -91,6 +91,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './css/profile.css'
 
 const Profile = () => {
   const [profile, setProfile] = useState({});
@@ -154,10 +155,10 @@ const Profile = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Profile</h2>
+    <div className="profile-container">
+      <h2 className="profile-title">Profile</h2>
       {editMode ? (
-        <form>
+        <form className="profile-form">
           <div className="form-group">
             <label>Name</label>
             <input
@@ -166,6 +167,7 @@ const Profile = () => {
               name="Name"
               value={formData.Name}
               onChange={handleChange}
+              placeholder="Enter your name"
             />
           </div>
           <div className="form-group">
@@ -176,6 +178,7 @@ const Profile = () => {
               name="Email"
               value={formData.Email}
               onChange={handleChange}
+              placeholder="Enter your email"
             />
           </div>
           <div className="form-group">
@@ -186,6 +189,7 @@ const Profile = () => {
               name="PhoneNumber"
               value={formData.PhoneNumber}
               onChange={handleChange}
+              placeholder="Enter your phone number"
             />
           </div>
           <div className="form-group">
@@ -196,6 +200,7 @@ const Profile = () => {
               name="Gear"
               value={formData.Gear}
               onChange={handleChange}
+              placeholder="Enter your gear"
             />
           </div>
           <div className="form-group">
@@ -206,26 +211,28 @@ const Profile = () => {
               name="EventsParticipated"
               value={formData.EventsParticipated}
               onChange={handleChange}
+              placeholder="Enter events participated"
             />
           </div>
-          <button type="button" className="btn btn-primary mt-3" onClick={handleSave}>
+          <button type="button" className="btn-submit" onClick={handleSave}>
             Save
           </button>
         </form>
       ) : (
-        <div>
+        <div className="profile-details">
           <p><strong>Name:</strong> {profile.Name}</p>
           <p><strong>Email:</strong> {profile.Email}</p>
           <p><strong>Phone Number:</strong> {profile.PhoneNumber}</p>
           <p><strong>Gear:</strong> {profile.Gear}</p>
           <p><strong>Events Participated:</strong> {profile.EventsParticipated}</p>
-          <button className="btn btn-primary mt-3" onClick={() => setEditMode(true)}>
+          <button className="btn-edit" onClick={() => setEditMode(true)}>
             Edit
           </button>
         </div>
       )}
     </div>
   );
+
 };
 
 export default Profile;

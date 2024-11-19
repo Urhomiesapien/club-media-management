@@ -3,33 +3,35 @@
 /* Container for Login Form */
 .container {
     background-color: #000000; /* Black background for the whole page */
-    color: #fff; /* White text */
+    color: #FF6500; /* White text */
     font-family: 'Roboto', sans-serif; /* Roboto font */
     display: flex;
-    justify-content: left;
-    align-items: left;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     flex-direction: column;
+    border-radius: 10px;
+
   }
   
   /* Login Title */
-  h2 {
+  .container-h2 {
     color: #FF6500; /* Green color for the title */
-    
+    font-weight: bold;
     font-size: 2rem;
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
   }
   
   /* Signup Link */
-  .signup-link {
-    color: #1a6d33; /* Slightly darker green for the signup link */
+  .login-link {
+    color: #ff7e33ad; /* Slightly darker green for the signup link */
     font-size: 1.1rem;
     text-decoration: none;
     margin-left: 20px;
   }
   
-  .signup-link:hover {
+  .login-link:hover {
     text-decoration: underline; /* Underline effect on hover */
   }
   
@@ -38,7 +40,7 @@
     width: 100%;
     max-width: 400px;
     padding: 20px;
-    background-color: #222; /* Dark background for the form */
+    background-color: #000000; /* Dark background for the form */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }
@@ -52,7 +54,8 @@
     width: 100%;
     padding: 12px;
     background: transparent;
-    border: 2px solid #FF6500; /* Orange border */
+    border: none;
+    border-bottom: 2px solid #FF6500; /* Orange border */
     border-radius: 5px;
     color: #bbb; /* Light gray text for input */
     font-size: 1rem;
@@ -92,7 +95,7 @@
   }
   
   button[type="submit"]:hover {
-    background-color: #FF6500; /* Darker green on hover */
+    background-color: #ffa56a; /* Darker green on hover */
   }
   
   /* Error or success message */

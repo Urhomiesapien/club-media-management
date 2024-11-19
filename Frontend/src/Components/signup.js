@@ -1,6 +1,8 @@
-// src/pages/Signup.js
+// Signup.js (Add the link wrapper similarly)
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // For the link to Login
+import './css/signup.css';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -25,53 +27,58 @@ const Signup = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Signup</h2>
+    <div className="signup-container">
+      <h2>Sign Up</h2>
+
+      {/* Centering the link here */}
+      <div className="center-link">
+        <Link to="/login" className="signup-link">Already have an account? Login</Link>
+      </div>
+
       <form onSubmit={handleSignup}>
         <div className="form-group">
           <label>Username</label>
           <input
             type="text"
-            className="form-control"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            placeholder="Enter your username"
           />
         </div>
         <div className="form-group">
           <label>Email</label>
           <input
             type="email"
-            className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="Enter your email"
           />
         </div>
-        
         <div className="form-group">
           <label>SRN</label>
           <input
-            type="memeberID"
-            className="form-control"
+            type="text"
             value={memberID}
             onChange={(e) => setmemberid(e.target.value)}
             required
+            placeholder="Enter your SRN"
           />
         </div>
-
         <div className="form-group">
           <label>Password</label>
           <input
             type="password"
-            className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Enter your password"
           />
         </div>
-        <button type="submit" className="btn btn-primary mt-3">Sign Up</button>
+        <button type="submit" className="btn-submit">Sign Up</button>
       </form>
+      {message && <div className="error-message">{message}</div>}
     </div>
   );
 };

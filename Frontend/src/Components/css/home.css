@@ -1,36 +1,104 @@
-/* src/pages/Home.css */
-.events-widget {
+/* Resetting default margins and paddings */
+
+/* Global Styles */
+body {
+    background-color: #000000; /* Black background */
+    font-family: 'Roboto', sans-serif; /* Roboto font */
+    color: white; /* Default text color */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  /* Main Container */
+  .home-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    max-height: 500px; /* Set maximum height for scrollable effect */
-    overflow-y: auto;
-    padding-right: 10px;
+    min-height: 100vh;
+  }
+  
+  /* Top Bar */
+  .main-content h1 {
+    color: #FF6500; /* Bright orange color */
+    font-size: 2.5rem; /* Large text for "Home" */
+    font-weight: bold;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .main-content .top-bar a {
+    color: #000000; /* Slightly darker orange */
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+  
+  .main-content .top-bar a:hover {
+    color: #ffc9a4; /* Brighten link on hover */
+    text-decoration: underline;
+  }
+  
+  /* Latest Events Widget */
+  .events-widget {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Spacing between event cards */
+    margin: 20px;
   }
   
   .event-card {
-    background-color: #e0f7fa;
+    background-color: #FF6500; /* Bright orange background */
+    color: #000000; /* Black text color */
+    border-radius: 10px;
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
+    text-align: center;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 8px rgba(255, 101, 0, 0.4); /* Subtle shadow */
+  }
+  
+  .event-card:hover {
+    background-color: #FF7F32; /* Lighter shade of orange on hover */
+    transform: scale(1.05); /* Slight expansion */
   }
   
   .event-card h3 {
-    font-size: 1.5rem;
-    color: #00796b;
-    margin-bottom: 5px;
+    font-size: 1.6rem;
+    font-weight: bold; /* Bold event name */
+    color: #000000; /* Ensure text is black for visibility */
+    margin-bottom: 10px;
   }
   
   .event-card p {
+    font-weight: bold; /* Make event date and organizer bold */
     margin: 5px 0;
   }
   
   .event-card a {
-    display: inline-block;
-    margin-top: 10px;
-    color: #00796b;
+    color: #000000; /* Black text for link */
     text-decoration: none;
     font-weight: bold;
+  }
+  
+  .event-card a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: auto; /* Push footer to the bottom */
+    padding: 10px 0;
+    font-size: 0.8rem;
+    color: #888888;
+  }
+  
+  .footer a {
+    color: #888888;
+    text-decoration: none;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .events-widget {
+      grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
   }
   

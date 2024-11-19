@@ -158,6 +158,7 @@ const Home = () => {
   const [event, setEvent] = useState(null); // State to hold the event data
   const [loading, setLoading] = useState(true); // State to manage loading state
 
+
   useEffect(() => {
     // Fetch the latest event when the component mounts
     const fetchLatestEvent = async () => {

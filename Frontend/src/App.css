@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+/* Reset margin and padding for body */
+root {
+  background-color: #000000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #000000; /* Dark background */
+  color: white; /* Text color */
+  padding-top: 60px; /* Add padding to account for the navbar height */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Style the navigation bar */
+nav {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between; /* Space between left and right sections */
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 10px 20px; /* Some space around the links */
+  background-color: #000000; /* Dark background */
+  width: 100%;
+  position: fixed; /* Fix the navbar to the top of the page */
+  top: 0; /* Align to the top */
+  z-index: 1000; /* Ensure it stays above other content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Optional shadow for emphasis */
 }
 
-.App-link {
-  color: #61dafb;
+/* Style the individual link buttons */
+nav a.btn {
+  font-weight: bold;
+  color: #FF6500; /* Orange color */
+  text-decoration: none; /* Removes underline from links */
+  margin: 0 15px; /* Space between the links */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  font-family: 'Roboto', sans-serif; /* Bold Roboto font */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Hover effect for links */
+nav a.btn:hover {
+  transform: scale(1.1); /* Slightly enlarge the link */
+  box-shadow: 0 0 10px rgba(255, 101, 0, 0.7); /* Orange glow effect */
+  color: #FF6500; /* Keep the color same on hover */
 }
+
+/* Section for left-aligned links (Home, Events, Signup) */
+nav .left-links {
+  display: flex;
+  justify-content: flex-start; /* Align left */
+  gap: 15px; /* Space between left-aligned links */
+}
+
+/* Section for right-aligned links (Profile, Login as another user) */
+nav .right-links {
+  margin-left: auto; /* Align the profile link to the right */
+  text-align: right;
+  display: flex;
+  gap: 15px; /* Space between right-aligned links */
+}
+
+/* Footer styles */
+.footer {
+  background-color: #000000; /* Dark background for the footer */
+  color: rgb(191, 92, 0); /* Orange text color */
+  text-align: center; /* Center align text */
+  padding: 10px 0; /* Padding for spacing */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5); /* Optional shadow above the footer */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto; /* Center align the content */
+  padding: 0 20px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-link {
+  color: #FF6500; /* The same orange color for footer links */
+  text-decoration: none; /* Remove underline */
+  margin: 0 15px; /* Space between links */
+}
+
+.footer-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+.container.mt-5 {
+  margin-top: 0; /* Remove or adjust the top margin */
+  background-color: #000000; /* Match the background color of your page */
+  color: white; /* Ensure text visibility */
+  padding: 20px; /* Add padding if needed for spacing */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+

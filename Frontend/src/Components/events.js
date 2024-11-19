@@ -52,35 +52,83 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal'; // Install: npm install react-modal
-
+import './css/events.css'
 const Events = () => {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    // Fetch all events
+    // Fetch all events or use dummy data if the backend is down
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/events');
-        setEvents(response.data);
+        // Uncomment this line to fetch from backend when available
+        // const response = await axios.get('http://localhost:5000/api/events');
+        // setEvents(response.data);
+
+        // Dummy data for testing
+        const dummyEvents = [
+          {
+            EventID: 1,
+            EventName: "Tech Expo 2024",
+            EventDate: "2024-11-20",
+            clubs: "Tech Club",
+            Members: 10,
+            mediaLink: "#",
+            EventFaculty: "Dr. Smith",
+            GearID: "G-1234",
+            ExpenseID: "E-5678"
+          },
+          {
+            EventID: 2,
+            EventName: "Art Exhibition",
+            EventDate: "2024-12-01",
+            clubs: "Art Club",
+            Members: 8,
+            mediaLink: "#",
+            EventFaculty: "Prof. Johnson",
+            GearID: "G-5678",
+            ExpenseID: "E-9101"
+          },
+          {
+            EventID: 3,
+            EventName: "Sports Meet",
+            EventDate: "2024-12-10",
+            clubs: "Sports Club",
+            Members: 12,
+            mediaLink: "#",
+            EventFaculty: "Coach Miller",
+            GearID: "G-9012",
+            ExpenseID: "E-3456"
+          }
+        ];
+
+        setEvents(dummyEvents); // Set dummy events for testing
       } catch (error) {
         console.error('Error fetching events:', error);
       }
     };
+
     fetchEvents();
   }, []);
 
+
   const handleEventClick = async (eventID) => {
-    // Fetch event details by ID
+    // Fetch event details or use dummy details
     try {
-      const response = await axios.get(`http://localhost:5000/api/events/${eventID}`);
-      setSelectedEvent(response.data);
+      // Uncomment this line to fetch from backend when available
+      // const response = await axios.get(`http://localhost:5000/api/events/${eventID}`);
+      // setSelectedEvent(response.data);
+
+      // Find the event in the dummy data
+      const selected = events.find((event) => event.EventID === eventID);
+      setSelectedEvent(selected);
       setModalOpen(true);
     } catch (error) {
       console.error('Error fetching event details:', error);
     }
   };
+
 
   const closeModal = () => {
     setModalOpen(false);
@@ -89,7 +137,7 @@ const Events = () => {
 
   return (
     <div className="container mt-5">
-      <h2>Events</h2>
+      <h2 className="events-title">Events</h2> {/* Apply the CSS class here */}
       <div className="events-list">
         {events.map((event) => (
           <div key={event.EventID} className="event-card">
@@ -103,7 +151,7 @@ const Events = () => {
           </div>
         ))}
       </div>
-
+  
       {/* Modal for Event Details */}
       {selectedEvent && (
         <Modal isOpen={modalOpen} onRequestClose={closeModal} contentLabel="Event Details">
@@ -119,6 +167,7 @@ const Events = () => {
       )}
     </div>
   );
+  
 };
 
 export default Events;

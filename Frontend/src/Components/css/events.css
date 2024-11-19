@@ -1,0 +1,9 @@
+/* Center the Events title, make it bold and orange */
+.events-title {
+    text-align: center;
+    font-weight: bold;
+    color: #FF6500; /* Orange color */
+    font-size: 4rem; /* Adjust size as necessary */
+    margin-bottom: 20px; /* Add spacing below the title */
+  }
+  
