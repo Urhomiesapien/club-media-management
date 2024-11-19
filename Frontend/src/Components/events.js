@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal'; // Install: npm install react-modal
+import axios from 'axios';
 import './css/events.css'
 const Events = () => {
   const [events, setEvents] = useState([]);
